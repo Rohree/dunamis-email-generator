@@ -1,60 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Dunamis Power Email Signature Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col items-center py-10">
-  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-8">
-    <div class="flex flex-col items-center mb-4">
-      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" alt="Dunamis Power Logo" class="w-20 h-20 mb-2 rounded-lg shadow" />
-      <h1 class="text-2xl font-bold text-blue-700 mb-2 text-center">Dunamis Power Email Signature Generator</h1>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center py-6 sm:py-10">
+  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-5 sm:p-8 mx-3">
+    <!-- Logo & Title -->
+    <div class="flex flex-col items-center mb-5 text-center">
+      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" 
+           alt="Dunamis Power Logo" 
+           class="w-16 h-16 sm:w-20 sm:h-20 mb-3 rounded-lg shadow" />
+      <h1 class="text-lg sm:text-2xl font-bold text-blue-700">Dunamis Power Email Signature Generator</h1>
     </div>
-    <p class="mb-6 text-gray-600 text-center">Fill in your details below to generate your signature.</p>
 
+    <p class="mb-6 text-gray-600 text-center text-sm sm:text-base">
+      Fill in your details below to generate your signature.
+    </p>
+
+    <!-- Form -->
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium text-gray-700">Full Name</label>
-        <input type="text" id="fullName" placeholder="John Doe" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+        <input type="text" id="fullName" placeholder="John Doe" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Job Title</label>
-        <input type="text" id="jobTitle" placeholder="Manager" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+        <input type="text" id="jobTitle" placeholder="Manager" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="text" id="phone" placeholder="+27 82 123 4567" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+        <input type="text" id="phone" placeholder="+27 82 123 4567" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="text" id="email" placeholder="john@dunamispower.co.za" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+        <input type="text" id="email" placeholder="john@dunamispower.co.za" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
     </div>
 
-    <button onclick="generateSignature()" class="w-full mt-6 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded shadow">Generate Signature</button>
+    <!-- Buttons -->
+    <button onclick="generateSignature()" 
+            class="w-full mt-6 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded shadow text-sm">
+      Generate Signature
+    </button>
 
     <label class="block mt-6 text-sm font-medium text-gray-700">Signature HTML</label>
-    <textarea id="signatureCode" readonly class="w-full h-40 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 bg-gray-100"></textarea>
-    <button onclick="copyCode()" class="w-full mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">Copy HTML</button>
+    <textarea id="signatureCode" readonly 
+              class="w-full h-32 sm:h-40 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 bg-gray-100 text-xs"></textarea>
+    <button onclick="copyCode()" 
+            class="w-full mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow text-sm">
+      Copy HTML
+    </button>
 
+    <!-- Preview -->
     <h3 class="mt-8 text-lg font-semibold text-gray-800">Signature Preview:</h3>
-    <div id="preview" class="preview mt-2 p-4 border rounded bg-gray-50"></div>
+    <div id="preview" class="preview mt-2 p-2 sm:p-4 border rounded bg-gray-50 overflow-x-auto text-sm"></div>
 
+    <!-- Instructions -->
     <h3 class="mt-8 text-lg font-semibold text-gray-800">How to Install Your Email Signature</h3>
-    <ul class="mt-2 list-disc list-inside text-gray-600 space-y-1">
-      <li><strong>Gmail:</strong> Go to Settings → See all settings → General → Signature → Paste your copied signature → Save.</li>
-      <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste your signature → Save.</li>
-      <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste your signature.</li>
+    <ul class="mt-2 list-disc list-inside text-gray-600 space-y-1 text-sm sm:text-base">
+      <li><strong>Gmail:</strong> Settings → See all settings → General → Signature → Paste → Save.</li>
+      <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste → Save.</li>
+      <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste.</li>
     </ul>
   </div>
 
   <script>
     function generateSignature() {
-      const name = document.getElementById('fullName').value;
-      const title = document.getElementById('jobTitle').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
+      const name = document.getElementById('fullName').value || 'Full Name';
+      const title = document.getElementById('jobTitle').value || 'Job Title';
+      const phone = document.getElementById('phone').value || '+27 00 000 0000';
+      const email = document.getElementById('email').value || 'email@dunamispower.co.za';
 
       const html = `
 <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 14px; color: #1e293b;">
@@ -80,7 +102,7 @@
   </tr>
 </table>`;
 
-      document.getElementById('signatureCode').value = html;
+      document.getElementById('signatureCode').value = html.trim();
       document.getElementById('preview').innerHTML = html;
     }
 
@@ -91,6 +113,5 @@
       alert('Signature HTML copied to clipboard!');
     }
   </script>
-
 </body>
 </html>
