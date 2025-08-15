@@ -3,46 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>Dunamis Power Email Signature Generator</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    label { display: block; margin-top: 10px; }
-    input { padding: 8px; width: 300px; margin-top: 4px; }
-    button { margin-top: 15px; padding: 10px 20px; background: #1a73e8; color: #fff; border: none; cursor: pointer; }
-    textarea { width: 100%; height: 200px; margin-top: 15px; }
-    .preview { margin-top: 20px; padding: 20px; border: 1px solid #ddd; }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center py-10">
+  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-8">
+    <div class="flex flex-col items-center mb-4">
+      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" alt="Dunamis Power Logo" class="w-20 h-20 mb-2 rounded-lg shadow" />
+      <h1 class="text-2xl font-bold text-blue-700 mb-2 text-center">Dunamis Power Email Signature Generator</h1>
+    </div>
+    <p class="mb-6 text-gray-600 text-center">Fill in your details below to generate your signature.</p>
 
-  <h1>Dunamis Power Email Signature Generator</h1>
-  <p>Fill in your details below to generate your signature.</p>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" id="fullName" placeholder="John Doe" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Job Title</label>
+        <input type="text" id="jobTitle" placeholder="Manager" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input type="text" id="phone" placeholder="+27 82 123 4567" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="text" id="email" placeholder="john@dunamispower.co.za" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2" />
+      </div>
+    </div>
 
-  <label>Full Name</label>
-  <input type="text" id="fullName" placeholder="John Doe">
+    <button onclick="generateSignature()" class="w-full mt-6 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded shadow">Generate Signature</button>
 
-  <label>Job Title</label>
-  <input type="text" id="jobTitle" placeholder="Manager">
+    <label class="block mt-6 text-sm font-medium text-gray-700">Signature HTML</label>
+    <textarea id="signatureCode" readonly class="w-full h-40 mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 bg-gray-100"></textarea>
+    <button onclick="copyCode()" class="w-full mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">Copy HTML</button>
 
-  <label>Phone Number</label>
-  <input type="text" id="phone" placeholder="+27 82 123 4567">
+    <h3 class="mt-8 text-lg font-semibold text-gray-800">Signature Preview:</h3>
+    <div id="preview" class="preview mt-2 p-4 border rounded bg-gray-50"></div>
 
-  <label>Email</label>
-  <input type="text" id="email" placeholder="john@dunamispower.co.za">
-
-  <button onclick="generateSignature()">Generate Signature</button>
-
-  <textarea id="signatureCode" readonly></textarea>
-  <button onclick="copyCode()">Copy HTML</button>
-
-  <h3>Signature Preview:</h3>
-  <div id="preview" class="preview"></div>
-
-  <h3>How to Install Your Email Signature</h3>
-  <ul style="margin-top: 10px; line-height: 1.6;">
-    <li><strong>Gmail:</strong> Go to Settings → See all settings → General → Signature → Paste your copied signature → Save.</li>
-    <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste your signature → Save.</li>
-    <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste your signature.</li>
-  </ul>
+    <h3 class="mt-8 text-lg font-semibold text-gray-800">How to Install Your Email Signature</h3>
+    <ul class="mt-2 list-disc list-inside text-gray-600 space-y-1">
+      <li><strong>Gmail:</strong> Go to Settings → See all settings → General → Signature → Paste your copied signature → Save.</li>
+      <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste your signature → Save.</li>
+      <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste your signature.</li>
+    </ul>
+  </div>
 
   <script>
     function generateSignature() {
@@ -52,25 +57,25 @@
       const email = document.getElementById('email').value;
 
       const html = `
-<table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 14px; color: #000000;">
+<table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 14px; color: #1e293b;">
   <tr>
-    <td rowspan="3" style="padding-right: 10px;">
-      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" width="80" alt="Dunamis Power Logo" style="display:block;">
+    <td rowspan="3" style="padding-right: 16px;">
+      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" width="80" alt="Dunamis Power Logo" style="display:block; border-radius:8px;">
     </td>
-    <td style="font-weight: bold; font-size: 16px; color: #000000;">${name}</td>
+    <td style="font-weight: bold; font-size: 18px; color: #1e293b;">${name}</td>
   </tr>
   <tr>
-    <td style="color: #000000;">${title}</td>
+    <td style="color: #334155; font-size: 15px;">${title}</td>
   </tr>
   <tr>
     <td>
-      <a href="tel:${phone}" style="color: #1a73e8; text-decoration: none;">${phone}</a> |
-      <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none;">${email}</a>
+      <a href="tel:${phone}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${phone}</a> |
+      <a href="mailto:${email}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${email}</a>
     </td>
   </tr>
   <tr>
-    <td colspan="2" style="padding-top: 5px; font-size: 12px; color: #888;">
-      <a href="https://www.dunamispower.co.za" style="color: #888; text-decoration: none;">www.dunamispower.co.za</a>
+    <td colspan="2" style="padding-top: 8px; font-size: 13px; color: #64748b;">
+      <a href="https://www.dunamispower.co.za" style="color: #64748b; text-decoration: none; font-weight: 500;">www.dunamispower.co.za</a>
     </td>
   </tr>
 </table>`;
