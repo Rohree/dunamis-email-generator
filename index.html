@@ -57,6 +57,9 @@
             class="w-full mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow text-sm">
       Copy HTML
     </button>
+      <button onclick="copyPreview()" class="w-full mt-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded shadow text-sm">
+        Copy Signature Preview
+      </button>
 
     <!-- Preview -->
     <h3 class="mt-8 text-lg font-semibold text-gray-800">Signature Preview:</h3>
@@ -112,6 +115,18 @@
       document.execCommand('copy');
       alert('Signature HTML copied to clipboard!');
     }
+    
+      function copyPreview() {
+        const preview = document.getElementById('preview');
+        // Create a temporary textarea to copy the HTML
+        const temp = document.createElement('textarea');
+        temp.value = preview.innerHTML;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        alert('Signature preview HTML copied to clipboard!');
+      }
   </script>
 </body>
 </html>
