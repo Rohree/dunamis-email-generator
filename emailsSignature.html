@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dunamis Power Email Signature Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    label { display: block; margin-top: 10px; }
+    input { padding: 8px; width: 300px; margin-top: 4px; }
+    button { margin-top: 15px; padding: 10px 20px; background: #1a73e8; color: #fff; border: none; cursor: pointer; }
+    textarea { width: 100%; height: 200px; margin-top: 15px; }
+    .preview { margin-top: 20px; padding: 20px; border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+
+  <h1>Dunamis Power Email Signature Generator</h1>
+  <p>Fill in your details below to generate your signature.</p>
+
+  <label>Full Name</label>
+  <input type="text" id="fullName" placeholder="John Doe">
+
+  <label>Job Title</label>
+  <input type="text" id="jobTitle" placeholder="Manager">
+
+  <label>Phone Number</label>
+  <input type="text" id="phone" placeholder="+27 82 123 4567">
+
+  <label>Email</label>
+  <input type="text" id="email" placeholder="john@dunamispower.co.za">
+
+  <button onclick="generateSignature()">Generate Signature</button>
+
+  <textarea id="signatureCode" readonly></textarea>
+  <button onclick="copyCode()">Copy HTML</button>
+
+  <h3>Signature Preview:</h3>
+  <div id="preview" class="preview"></div>
+
+  <h3>How to Install Your Email Signature</h3>
+  <ul style="margin-top: 10px; line-height: 1.6;">
+    <li><strong>Gmail:</strong> Go to Settings → See all settings → General → Signature → Paste your copied signature → Save.</li>
+    <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste your signature → Save.</li>
+    <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste your signature.</li>
+  </ul>
+
+  <script>
+    function generateSignature() {
+      const name = document.getElementById('fullName').value;
+      const title = document.getElementById('jobTitle').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+
+      const html = `
+<table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 14px; color: #000000;">
+  <tr>
+    <td rowspan="3" style="padding-right: 10px;">
+      <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" width="80" alt="Dunamis Power Logo" style="display:block;">
+    </td>
+    <td style="font-weight: bold; font-size: 16px; color: #000000;">${name}</td>
+  </tr>
+  <tr>
+    <td style="color: #000000;">${title}</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="tel:${phone}" style="color: #1a73e8; text-decoration: none;">${phone}</a> |
+      <a href="mailto:${email}" style="color: #1a73e8; text-decoration: none;">${email}</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding-top: 5px; font-size: 12px; color: #888;">
+      <a href="https://www.dunamispower.co.za" style="color: #888; text-decoration: none;">www.dunamispower.co.za</a>
+    </td>
+  </tr>
+</table>`;
+
+      document.getElementById('signatureCode').value = html;
+      document.getElementById('preview').innerHTML = html;
+    }
+
+    function copyCode() {
+      const textarea = document.getElementById('signatureCode');
+      textarea.select();
+      document.execCommand('copy');
+      alert('Signature HTML copied to clipboard!');
+    }
+  </script>
+
+</body>
+</html>
