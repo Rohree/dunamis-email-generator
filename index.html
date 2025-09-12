@@ -7,38 +7,38 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col items-center py-6 sm:py-10">
-  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-5 sm:p-8 mx-3">
+  <div class="max-w-xl w-full bg-white rounded-lg shadow-lg p-5 sm:p-8 mx-3 text-gray-500">
     <!-- Logo & Title -->
     <div class="flex flex-col items-center mb-5 text-center">
       <img src="https://i.ibb.co/Fq7HqsHT/Dunamis-Power-03-1141-logo.png" 
            alt="Dunamis Power Logo" 
            class="w-16 h-16 sm:w-20 sm:h-20 mb-3 rounded-lg shadow" />
-      <h1 class="text-lg sm:text-2xl font-bold text-blue-700">Dunamis Power Email Signature Generator</h1>
+      <h1 class="text-lg sm:text-2xl font-bold text-gray-700">Dunamis Power Email Signature Generator</h1>
     </div>
 
-    <p class="mb-6 text-gray-600 text-center text-sm sm:text-base">
+    <p class="mb-6 text-gray-500 text-center text-sm sm:text-base">
       Fill in your details below to generate your signature.
     </p>
 
     <!-- Form -->
     <div class="space-y-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+  <label class="block text-sm font-medium text-gray-500">Full Name</label>
         <input type="text" id="fullName" placeholder="John Doe" 
                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700">Job Title</label>
+  <label class="block text-sm font-medium text-gray-500">Job Title</label>
         <input type="text" id="jobTitle" placeholder="Manager" 
                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+  <label class="block text-sm font-medium text-gray-500">Phone Number</label>
         <input type="text" id="phone" placeholder="+27 82 123 4567" 
                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700">Email</label>
+  <label class="block text-sm font-medium text-gray-500">Email</label>
         <input type="text" id="email" placeholder="john@dunamispower.co.za" 
                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2 text-sm" />
       </div>
@@ -62,12 +62,12 @@
       </button>
 
     <!-- Preview -->
-    <h3 class="mt-8 text-lg font-semibold text-gray-800">Signature Preview:</h3>
+  <h3 class="mt-8 text-lg font-semibold text-gray-600">Signature Preview:</h3>
     <div id="preview" class="preview mt-2 p-2 sm:p-4 border rounded bg-gray-50 overflow-x-auto text-sm"></div>
 
     <!-- Instructions -->
-    <h3 class="mt-8 text-lg font-semibold text-gray-800">How to Install Your Email Signature</h3>
-    <ul class="mt-2 list-disc list-inside text-gray-600 space-y-1 text-sm sm:text-base">
+  <h3 class="mt-8 text-lg font-semibold text-gray-600">How to Install Your Email Signature</h3>
+  <ul class="mt-2 list-disc list-inside text-gray-500 space-y-1 text-sm sm:text-base">
       <li><strong>Gmail:</strong> Settings → See all settings → General → Signature → Paste → Save.</li>
       <li><strong>Outlook Desktop:</strong> File → Options → Mail → Signatures → New → Paste → Save.</li>
       <li><strong>Apple Mail:</strong> Mail → Preferences → Signatures → Select account → Paste.</li>
@@ -98,10 +98,18 @@
       <a href="mailto:${email}" style="color: #2563eb; text-decoration: none; font-weight: 500;">${email}</a>
     </td>
   </tr>
+</tr>
   <tr>
     <td colspan="2" style="padding-top: 8px; font-size: 13px; color: #64748b;">
       <a href="https://www.dunamispower.co.za" style="color: #64748b; text-decoration: none; font-weight: 500;">www.dunamispower.co.za</a><br>
       <span style="color: #64748b; font-size: 13px; font-weight: 500;">98 party road Boltonwold Meyerton</span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding-top: 8px; font-size: 11px; color: #6b7280; line-height:1.25;">
+      <p style="margin:0;">Disclaimer<br>
+      The information contained in this communication from the sender is confidential. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful.</p>
+      <p style="margin:8px 0 0 0;">This email has been scanned for viruses and malware, and may have been automatically archived by Mimecast; a leader in email security and cyber resilience. Mimecast integrates email defenses with brand protection, security awareness training, web security, compliance and other essential capabilities. Mimecast helps protect large and small organizations from malicious activity, human error and technology failure; and to lead the movement toward building a more resilient world. To find out more, visit our website.</p>
     </td>
   </tr>
 </table>`;
